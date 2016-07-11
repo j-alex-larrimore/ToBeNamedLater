@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 	public float speed;
 	public float jumpForce;
 
+	private int health = 5;
+
 	private bool grounded = false;
 
 	// Use this for initialization
@@ -60,4 +62,11 @@ public class Player : MonoBehaviour {
 		animator.SetTrigger ("playerAttack");
 	}
 
+
 }
+
+
+
+
+
+
