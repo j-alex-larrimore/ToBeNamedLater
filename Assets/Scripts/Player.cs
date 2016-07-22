@@ -8,6 +8,9 @@ public class Player : MonoBehaviour {
 	public float speed;
 	public float jumpForce;
 
+	public AudioClip gameOver;
+	public AudioClip jump;
+
 	private int health = 5;
 
 	private bool grounded = false;
@@ -54,6 +57,7 @@ public class Player : MonoBehaviour {
 
 	private void Jump(){
 		if (grounded) {
+			SoundController.Instance.PlaySingle(jump);
 			rigidBody.AddForce (new Vector2 (0, jumpForce));
 		}
 	}
@@ -64,9 +68,9 @@ public class Player : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Hat") {
-			GameController.Instance.NewLevel (1);
+			Application.LoadLevel(1);
 		} else if (other.tag == "GameOverBoundary") {
-			GameController.Instance.GameOver ();
+			SoundController.Instance.PlaySingle (gameOver);
 		}
 	}
 }
