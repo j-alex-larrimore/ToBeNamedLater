@@ -62,7 +62,13 @@ public class Player : MonoBehaviour {
 		animator.SetTrigger ("playerAttack");
 	}
 
-
+	private void OnTriggerEnter2D(Collider2D other){
+		if (other.tag == "Hat") {
+			GameController.Instance.NewLevel (1);
+		} else if (other.tag == "GameOverBoundary") {
+			GameController.Instance.GameOver ();
+		}
+	}
 }
 
 
